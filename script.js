@@ -14,8 +14,8 @@ var scoreForm = document.querySelector("#score-form");
 
 var userInitials = [];
 
-document.querySelector('.Score').style.display='none';
-document.querySelector('.highscorePage').style.display='none';
+document.querySelector(".Score").style.display="none";
+document.querySelector(".highscorePage").style.display="none";
 
 refreshButton.addEventListener("click", function(){
     location.reload();
@@ -37,10 +37,10 @@ function setTime(){
 
 const startBtn = document.getElementById("startquiz");
 
-startBtn.addEventListener('click', function() {
+startBtn.addEventListener("click", function() {
     setTime();
-    startBtn.style.display = 'none';
-    document.querySelector('.splashPage').style.display='none';
+    startBtn.style.display = "none";
+    document.querySelector(".splashPage").style.display="none";
     displayQuestions(questionIndex);
 });
 
@@ -59,8 +59,8 @@ function displayQuestions(){
         var option = document.createElement("button");
         option.textContent = question.choices[i];
         option.setAttribute("class", "option");
-        option.addEventListener("click", function(e) {
-            var optionClicked = (e.target.innerHTML);
+        option.addEventListener("click", function(pick) {
+            var optionClicked = (pick.target.innerHTML);
             
             if(optionClicked === questions[questionIndex].answer){
                 alert("Correct!");
@@ -73,10 +73,10 @@ function displayQuestions(){
             }
             
         });
-        if (questionIndex == questions.length - 1) {
+         if (questionIndex == questions.length - 1) { // Can't get it to  go to the last questions.
             clearInterval(timerInterval);
-            document.querySelector('.Score').style.display='block';
-            document.querySelector(".Time").style.display='none';
+            document.querySelector(".Score").style.display="block";
+            document.querySelector(".Time").style.display="none";
             highScoreEl.textContent = "YOUR SCORE IS " + secondsLeft;
             return;
         }
@@ -112,7 +112,7 @@ function init() {
     
     const submitBtn = document.getElementById("submit");
     
-    submitBtn.addEventListener('click', function() {
+    submitBtn.addEventListener("click", function() {
         event.preventDefault();
         
         var initialText = initialInput.value.trim();
@@ -124,8 +124,8 @@ function init() {
         console.log(userInitials);
         initialInput.value = "";
         
-        document.querySelector('.Score').style.display='none';
-        document.querySelector('.highscorePage').style.display='block';
+        document.querySelector(".Score").style.display="none";
+        document.querySelector(".highscorePage").style.display='block';
         
         storeScore();
         renderScores();
